@@ -66,6 +66,12 @@
 		49BB31E7246853EA008A4CB0 /* ICloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB31E6246853EA008A4CB0 /* ICloudManager.swift */; };
 		49BC061C212931F4005A0FE7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC061B212931F4005A0FE7 /* AboutViewController.swift */; };
 		49C9EF64223E78F5005D8B6A /* ClashProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9EF63223E78F5005D8B6A /* ClashProxy.swift */; };
+		49CCDA282A54F8DA00FF1E13 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA272A54F8DA00FF1E13 /* ConnectionsViewController.swift */; };
+		49CCDA2A2A54F9AC00FF1E13 /* ClashWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA292A54F9AC00FF1E13 /* ClashWindowController.swift */; };
+		49CCDA2D2A54FBA600FF1E13 /* ConnectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA2C2A54FBA600FF1E13 /* ConnectionsViewModel.swift */; };
+		49CCDA302A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA2F2A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift */; };
+		49CCDA322A5506D100FF1E13 /* ConnectionTopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA312A5506D100FF1E13 /* ConnectionTopListView.swift */; };
+		49CCDA362A55126A00FF1E13 /* ConnectionDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA352A55126A00FF1E13 /* ConnectionDetailInfoView.swift */; };
 		49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF3B2020CD7463001EBF94 /* AppDelegate.swift */; };
 		49CF3B2820CD7465001EBF94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CF3B2620CD7465001EBF94 /* Main.storyboard */; };
 		49CF3B5C20CE8068001EBF94 /* ClashResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF3B5B20CE8068001EBF94 /* ClashResourceManager.swift */; };
@@ -205,6 +211,12 @@
 		49BB31E6246853EA008A4CB0 /* ICloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudManager.swift; sourceTree = "<group>"; };
 		49BC061B212931F4005A0FE7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		49C9EF63223E78F5005D8B6A /* ClashProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashProxy.swift; sourceTree = "<group>"; };
+		49CCDA272A54F8DA00FF1E13 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		49CCDA292A54F9AC00FF1E13 /* ClashWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashWindowController.swift; sourceTree = "<group>"; };
+		49CCDA2C2A54FBA600FF1E13 /* ConnectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsViewModel.swift; sourceTree = "<group>"; };
+		49CCDA2F2A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsLeftPannelView.swift; sourceTree = "<group>"; };
+		49CCDA312A5506D100FF1E13 /* ConnectionTopListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTopListView.swift; sourceTree = "<group>"; };
+		49CCDA352A55126A00FF1E13 /* ConnectionDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDetailInfoView.swift; sourceTree = "<group>"; };
 		49CF3B1D20CD7463001EBF94 /* ClashX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClashX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CF3B2020CD7463001EBF94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CF3B2720CD7465001EBF94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -420,6 +432,7 @@
 		4989F98520D0AA300001E564 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				49CCDA2B2A54FA8900FF1E13 /* Connections */,
 				498BC2512929CC0A00CA8084 /* Settings */,
 				49BC061B212931F4005A0FE7 /* AboutViewController.swift */,
 				499976C721359F0400E7BF83 /* ClashWebViewContoller.swift */,
@@ -474,6 +487,26 @@
 			path = StatusItem;
 			sourceTree = "<group>";
 		};
+		49CCDA2B2A54FA8900FF1E13 /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				49CCDA2E2A54FC1900FF1E13 /* Views */,
+				49CCDA272A54F8DA00FF1E13 /* ConnectionsViewController.swift */,
+				49CCDA2C2A54FBA600FF1E13 /* ConnectionsViewModel.swift */,
+			);
+			path = Connections;
+			sourceTree = "<group>";
+		};
+		49CCDA2E2A54FC1900FF1E13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49CCDA2F2A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift */,
+				49CCDA312A5506D100FF1E13 /* ConnectionTopListView.swift */,
+				49CCDA352A55126A00FF1E13 /* ConnectionDetailInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		49CF3B1420CD7463001EBF94 = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +547,7 @@
 				49CF3B2A20CD7465001EBF94 /* ClashX.entitlements */,
 				49CF3B3520CD75DF001EBF94 /* ClashX-Bridging-Header.h */,
 				F9FAB31D262BE04800DE02A6 /* Images.xcassets */,
+				49CCDA292A54F9AC00FF1E13 /* ClashWindowController.swift */,
 			);
 			path = ClashX;
 			sourceTree = "<group>";
@@ -753,7 +787,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --fix\n";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --fix && ${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		A741C26F5755233F0D7CEC6F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -794,10 +828,12 @@
 				F935B2FC23085515009E4D33 /* SystemProxyManager.swift in Sources */,
 				495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */,
 				49281C802A1F01FA00F60935 /* DebugSettingViewController.swift in Sources */,
+				49CCDA2A2A54F9AC00FF1E13 /* ClashWindowController.swift in Sources */,
 				4929F67F258CE04700A435F6 /* Settings.swift in Sources */,
 				49D6A45629AEEC55006487EF /* StatusItemViewProtocol.swift in Sources */,
 				493AEAE3221AE3420016FE98 /* AppVersionUtil.swift in Sources */,
 				49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */,
+				49CCDA2D2A54FBA600FF1E13 /* ConnectionsViewModel.swift in Sources */,
 				496BDEE021196F1E00C5207F /* Logger.swift in Sources */,
 				4905A2CA2A20841B00AEDA2E /* NSView+Layout.swift in Sources */,
 				49722FEF211F338B00650A41 /* FileEvent.swift in Sources */,
@@ -822,6 +858,7 @@
 				499A486522EEA3FD00F6C675 /* Array+Safe.swift in Sources */,
 				F92D0B24236BC12000575E15 /* SavedProxyModel.swift in Sources */,
 				F92D0B2A236C759100575E15 /* NSTextField+Vibrancy.swift in Sources */,
+				49CCDA302A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift in Sources */,
 				49D223392A1DA5F10002FFCB /* SSIDSuspendTool.swift in Sources */,
 				F910AA24240134AF00116E95 /* ProxyGroupMenu.swift in Sources */,
 				4952C3BF2115C7CA004A4FA8 /* MenuItemFactory.swift in Sources */,
@@ -835,6 +872,8 @@
 				4994B5522A47C1C900E595B9 /* NSMutableArray+Safe.m in Sources */,
 				F9E754D2239CC28D00CEE7CC /* NSAlert+Extension.swift in Sources */,
 				499976C821359F0400E7BF83 /* ClashWebViewContoller.swift in Sources */,
+				49CCDA282A54F8DA00FF1E13 /* ConnectionsViewController.swift in Sources */,
+				49CCDA322A5506D100FF1E13 /* ConnectionTopListView.swift in Sources */,
 				49D176A9235614340093DD7B /* ProxyGroupSpeedTestMenuItem.swift in Sources */,
 				F976275C23634DF8000EDEFE /* LoginServiceKit.swift in Sources */,
 				4966E9E6211824F300A391FB /* NSImage+extension.swift in Sources */,
@@ -852,6 +891,7 @@
 				498BC2532929CC2A00CA8084 /* SettingTabViewController.swift in Sources */,
 				4994B5562A47C5FA00E595B9 /* Hotfixs.swift in Sources */,
 				49862FA0218418C600A1D5EC /* ClashRule.swift in Sources */,
+				49CCDA362A55126A00FF1E13 /* ConnectionDetailInfoView.swift in Sources */,
 				49C9EF64223E78F5005D8B6A /* ClashProxy.swift in Sources */,
 				4929F684258CE07500A435F6 /* UserDefaultWrapper.swift in Sources */,
 				F9E8F34623A12B89002DE5E8 /* String+Encode.swift in Sources */,

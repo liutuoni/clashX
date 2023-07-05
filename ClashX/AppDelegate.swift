@@ -87,6 +87,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.async {
             self.postFinishLaunching()
         }
+
+        ClashWindowController<ConnectionsViewController>.create().showWindow(self)
     }
 
     func postFinishLaunching() {
