@@ -88,7 +88,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.postFinishLaunching()
         }
 
-        ClashWindowController<ConnectionsViewController>.create().showWindow(self)
+        if #available(macOS 10.15, *) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                ClashWindowController<ConnectionsViewController>.create().showWindow(self)
+            }
+        }
+
     }
 
     func postFinishLaunching() {

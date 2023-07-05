@@ -299,5 +299,10 @@ func clash_closeAllConnections() {
 	}
 }
 
+//export clash_getProggressInfo
+func clash_getProggressInfo() *C.char {
+	return C.CString(GetTcpNetList() + GetUDpList())
+}
+
 func main() {
 }

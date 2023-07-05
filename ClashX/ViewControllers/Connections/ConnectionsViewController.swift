@@ -7,12 +7,16 @@
 //
 
 import AppKit
+import Combine
 
+@available(macOS 10.15, *)
 class ConnectionsViewController: NSViewController {
     let viewModel = ConnectionsViewModel()
     let leftTableView = ConnectionsLeftPannelView()
     let topView = ConnectionTopListView()
     let detailView = ConnectionDetailInfoView()
+
+    var disposeBag = Set<AnyCancellable>()
 
     var leftWidthConstraint: NSLayoutConstraint?
     override func viewDidLoad() {
@@ -70,6 +74,10 @@ class ConnectionsViewController: NSViewController {
              $0.rightAnchor.constraint(equalTo: view.rightAnchor),
              $0.topAnchor.constraint(equalTo: topView.bottomAnchor)]
         }
+
+        viewModel.$applicationMap.sink { x in
+            print("===>", x.keys.count)
+        }.store(in: &disposeBag)
     }
 }
 
