@@ -42,7 +42,7 @@ class ConnectionsViewController: NSViewController {
     }
 
     func setup() {
-        title = NSLocalizedString("连接", comment: "")
+        title = NSLocalizedString("Connections", comment: "")
         view.addSubview(leftTableView)
         view.makeConstraints {
             [$0.widthAnchor.constraint(greaterThanOrEqualToConstant: 900),

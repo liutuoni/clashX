@@ -83,9 +83,12 @@ extension ConnectionTopListView: NSTableViewDataSource {
             switch type {
             case .process:
                 view = ConnectionProxyClientCellView()
+            case .statusIcon:
+                view = ConnectionStatusIconCellView()
             default:
                 view = ConnectionTextCellView()
             }
+            view?.identifier = tableColumn.identifier
         }
         let c = connections[row]
         view?.setup(with: c, type: type)

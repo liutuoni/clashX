@@ -44,7 +44,7 @@ class ConnectionTextCellView: NSView, ConnectionCellProtocol {
         case .currentDownload:
             connection.$downloadSpeed.map { SpeedUtils.getSpeedString(for: $0) }.weakAssign(to: \.stringValue, on: label).store(in: &cancellable)
         case .status:
-            connection.$done.map { $0 ? NSLocalizedString("In Progress", comment: "") : NSLocalizedString("Done", comment: "") }.weakAssign(to: \.stringValue, on: label).store(in: &cancellable)
+            connection.$done.map { $0 ? NSLocalizedString("Done", comment: "") : NSLocalizedString("In Progress", comment: "") }.weakAssign(to: \.stringValue, on: label).store(in: &cancellable)
         case .statusIcon, .process:
             return
         case .rule:
@@ -65,7 +65,5 @@ class ConnectionTextCellView: NSView, ConnectionCellProtocol {
     override func prepareForReuse() {
         super.prepareForReuse()
         cancellable.removeAll()
-        print("===> prepareForReuse")
-
     }
 }

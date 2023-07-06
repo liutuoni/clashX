@@ -36,22 +36,10 @@ class ConnectionsLeftPannelView: NSView {
 
     private func setupSubviews() {
         let v = NSScrollView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.wantsLayer = true
-        v.drawsBackground = false
-        v.documentView = tableView
-        self.addSubview(v)
-        v.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        v.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        v.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+        addSubview(v)
+        v.makeConstraintsToBindToSuperview(NSEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
+        v.contentView.documentView = tableView
 
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: v.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: v.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: v.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: v.trailingAnchor),
-            tableView.heightAnchor.constraint(equalTo: self.heightAnchor)
-        ])
         let column = NSTableColumn(identifier: columnIdentifier)
         column.resizingMask = .autoresizingMask
         tableView.addTableColumn(column)

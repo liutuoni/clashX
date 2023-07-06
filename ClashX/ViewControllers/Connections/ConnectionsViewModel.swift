@@ -88,7 +88,6 @@ class ConnectionsViewModel {
         let pathLength = proc_pidpath(pid, pathBuffer, UInt32(MAXPATHLEN))
         if pathLength > 0 {
             let path = String(cString: pathBuffer)
-            print("  path=\(path)")
             return path
         }
         return nil

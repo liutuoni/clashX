@@ -40,7 +40,7 @@ enum ConnectionColume:String, CaseIterable {
         switch self {
         case .statusIcon: return 16
         case .status: return 30
-        default:return 100
+        default:return 60
         }
     }
 
