@@ -44,7 +44,7 @@ class ConnectionProxyClientCellView: NSView, ConnectionCellProtocol {
     }
 
     func setup(with connection: ClashConnectionSnapShot.Connection, type: ConnectionColume) {
-        nameLabel.stringValue = connection.metadata.processName
+        nameLabel.stringValue = connection.metadata.processName ?? "Unknown"
         imageView.image = connection.metadata.processImage
     }
 }

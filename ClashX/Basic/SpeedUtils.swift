@@ -16,7 +16,7 @@ enum SpeedUtils {
     static func getNetString(for byte: Int) -> String {
         let kb = byte / 1024
         if kb < 1024 {
-            return  "\(kb)KB/s"
+            return  "\(kb)KB"
         } else {
             let mb = Double(kb) / 1024.0
             if mb >= 100 {

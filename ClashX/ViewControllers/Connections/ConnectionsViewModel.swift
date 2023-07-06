@@ -42,10 +42,10 @@ class ConnectionsViewModel {
         var processMap:[String:String]?
         for conn in snapShot.connections {
             if let oldConn = connections[conn.id] {
-                oldConn.upload = conn.upload
-                oldConn.download = conn.download
                 oldConn.uploadSpeed = conn.upload - oldConn.upload
                 oldConn.downloadSpeed = conn.download - oldConn.download
+                oldConn.upload = conn.upload
+                oldConn.download = conn.download
             } else {
                 if processMap == nil {
                     processMap = getProcessList()
@@ -54,13 +54,11 @@ class ConnectionsViewModel {
                    let info = getProgressInfo(pid: pid) {
                     conn.metadata.pid = pid
                     conn.metadata.processPath = info.path ?? ""
+                    conn.metadata.processName = info.name
                     conn.metadata.processImage = info.image
-                } else {
-                    print("===> not found for pid", conn.metadata.host)
                 }
 
                 connections[conn.id] = conn
-
             }
         }
 
@@ -82,17 +80,40 @@ class ConnectionsViewModel {
         return map
     }
 
+    func getProcessPath(pid:Int32) -> String? {
+        let pathBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(MAXPATHLEN))
+        defer {
+            pathBuffer.deallocate()
+        }
+        let pathLength = proc_pidpath(pid, pathBuffer, UInt32(MAXPATHLEN))
+        if pathLength > 0 {
+            let path = String(cString: pathBuffer)
+            print("  path=\(path)")
+            return path
+        }
+        return nil
+    }
+
     func getProgressInfo(pid:String) -> ConnectionApplication? {
         if let info = applicationMap[pid] {
             return info
         }
-        guard let pidValue = pid_t(pid) else { return nil }
-        guard let application = NSRunningApplication(processIdentifier: pidValue)
-        else { return nil }
+        guard let pidValue = Int32(pid) else { return nil }
+
+        if let application = NSRunningApplication(processIdentifier: pidValue) {
+            let info = ConnectionApplication(pid:pid,
+                                             image: application.icon,
+                                             name: application.localizedName,
+                                             path: application.executableURL?.absoluteString)
+            applicationMap[pid] = info
+            return info
+        }
+
+        guard let path = getProcessPath(pid: pidValue) else { return nil }
         let info = ConnectionApplication(pid:pid,
-                                         image: application.icon,
-                                         name: application.localizedName,
-                                         path: application.executableURL?.absoluteString)
+                                         image: NSWorkspace.shared.icon(forFile:path),
+                                         name: path.components(separatedBy: "/").last,
+                                         path: path)
         applicationMap[pid] = info
         return info
     }
