@@ -8,8 +8,13 @@
 
 import AppKit
 
+@available(macOS 10.15, *)
 class ConnectionTopListView: NSView {
-    let columnIdentifier = NSUserInterfaceItemIdentifier(rawValue: "column")
+    var connections = [ClashConnectionSnapShot.Connection]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private let tableView: NSTableView = {
         let table = NSTableView()
         table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
@@ -33,40 +38,57 @@ class ConnectionTopListView: NSView {
 
     private func setupSubviews() {
         let v = NSScrollView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.wantsLayer = true
-        v.drawsBackground = false
-        v.documentView = tableView
-        self.addSubview(v)
-        v.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        v.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        v.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        v.contentView.documentView = tableView
+        addSubview(v)
+        v.makeConstraintsToBindToSuperview()
+        v.hasVerticalScroller = true
+        v.hasHorizontalScroller = true
 
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: v.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: v.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: v.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: v.trailingAnchor),
-            tableView.heightAnchor.constraint(equalTo: heightAnchor)
-        ])
-        let column = NSTableColumn(identifier: columnIdentifier)
-        column.resizingMask = .autoresizingMask
-        tableView.addTableColumn(column)
-        tableView.intercellSpacing = NSSize(width: tableView.bounds.width, height: 24)
-        tableView.headerView = nil
+        for columnType in ConnectionColume.allCases {
+            let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: columnType.rawValue))
+            column.title = columnType.columeTitle
+            column.minWidth = columnType.minWidth
+            column.maxWidth = columnType.maxWidth
+            tableView.addTableColumn(column)
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sizeLastColumnToFit()
-        tableView.usesAutomaticRowHeights = true
         tableView.reloadData()
 
     }
 }
 
+@available(macOS 10.15, *)
 extension ConnectionTopListView: NSTableViewDelegate {
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        print(tableView.selectedRow)
+    }
 
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 30
+    }
 }
 
+@available(macOS 10.15, *)
 extension ConnectionTopListView: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return connections.count
+    }
 
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let tableColumn, let type = ConnectionColume(rawValue: tableColumn.identifier.rawValue) else { return nil }
+        var view = tableView.makeView(withIdentifier: tableColumn.identifier, owner: self) as? ConnectionCellProtocol
+        if view == nil {
+            switch type {
+            case .process:
+                view = ConnectionProxyClientCellView()
+            default:
+                view = ConnectionTextCellView()
+            }
+        }
+        let c = connections[row]
+        view?.setup(with: c, type: type)
+        return view
+    }
 }

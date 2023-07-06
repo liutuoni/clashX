@@ -46,6 +46,12 @@
 		4989F98E20D0AE990001E564 /* sampleConfig.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 4989F98D20D0AE990001E564 /* sampleConfig.yaml */; };
 		498BC2532929CC2A00CA8084 /* SettingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BC2522929CC2A00CA8084 /* SettingTabViewController.swift */; };
 		498BC2552929CCAE00CA8084 /* GeneralSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BC2542929CCAE00CA8084 /* GeneralSettingViewController.swift */; };
+		4991D2282A5646D200978143 /* ConnectionProxyClientCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991D2272A5646D200978143 /* ConnectionProxyClientCellView.swift */; };
+		4991D22A2A56472300978143 /* ConnectionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991D2292A56472300978143 /* ConnectionCellProtocol.swift */; };
+		4991D22C2A56478400978143 /* ConnectionColume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991D22B2A56478400978143 /* ConnectionColume.swift */; };
+		4991D22E2A564A4200978143 /* ConnectionTextCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991D22D2A564A4200978143 /* ConnectionTextCellView.swift */; };
+		4991D2302A564DDC00978143 /* SpeedUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991D22F2A564DDC00978143 /* SpeedUtils.swift */; };
+		4991D2322A565E6A00978143 /* Combine+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991D2312A565E6A00978143 /* Combine+Ext.swift */; };
 		4994B5522A47C1C900E595B9 /* NSMutableArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4994B5512A47C1C900E595B9 /* NSMutableArray+Safe.m */; };
 		4994B5542A47C4FF00E595B9 /* NormalMenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4994B5532A47C4FF00E595B9 /* NormalMenuItemView.swift */; };
 		4994B5562A47C5FA00E595B9 /* Hotfixs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4994B5552A47C5FA00E595B9 /* Hotfixs.swift */; };
@@ -190,6 +196,12 @@
 		4989F98D20D0AE990001E564 /* sampleConfig.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = sampleConfig.yaml; sourceTree = "<group>"; };
 		498BC2522929CC2A00CA8084 /* SettingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTabViewController.swift; sourceTree = "<group>"; };
 		498BC2542929CCAE00CA8084 /* GeneralSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingViewController.swift; sourceTree = "<group>"; };
+		4991D2272A5646D200978143 /* ConnectionProxyClientCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionProxyClientCellView.swift; sourceTree = "<group>"; };
+		4991D2292A56472300978143 /* ConnectionCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionCellProtocol.swift; sourceTree = "<group>"; };
+		4991D22B2A56478400978143 /* ConnectionColume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionColume.swift; sourceTree = "<group>"; };
+		4991D22D2A564A4200978143 /* ConnectionTextCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTextCellView.swift; sourceTree = "<group>"; };
+		4991D22F2A564DDC00978143 /* SpeedUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedUtils.swift; sourceTree = "<group>"; };
+		4991D2312A565E6A00978143 /* Combine+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Ext.swift"; sourceTree = "<group>"; };
 		4994B5502A47C1C900E595B9 /* NSMutableArray+Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Safe.h"; sourceTree = "<group>"; };
 		4994B5512A47C1C900E595B9 /* NSMutableArray+Safe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Safe.m"; sourceTree = "<group>"; };
 		4994B5532A47C4FF00E595B9 /* NormalMenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalMenuItemView.swift; sourceTree = "<group>"; };
@@ -453,6 +465,16 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		4991D2262A56467600978143 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4991D2272A5646D200978143 /* ConnectionProxyClientCellView.swift */,
+				4991D2292A56472300978143 /* ConnectionCellProtocol.swift */,
+				4991D22D2A564A4200978143 /* ConnectionTextCellView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4994B54F2A47C1A800E595B9 /* Safe */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +493,8 @@
 				4905A2C92A20841B00AEDA2E /* NSView+Layout.swift */,
 				49B10869216A356D0064FFCE /* String+Extension.swift */,
 				49ABB748236B0F9E00535CD7 /* UnsafePointer+bridge.swift */,
+				4991D22F2A564DDC00978143 /* SpeedUtils.swift */,
+				4991D2312A565E6A00978143 /* Combine+Ext.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -500,9 +524,11 @@
 		49CCDA2E2A54FC1900FF1E13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4991D2262A56467600978143 /* Cell */,
 				49CCDA2F2A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift */,
 				49CCDA312A5506D100FF1E13 /* ConnectionTopListView.swift */,
 				49CCDA352A55126A00FF1E13 /* ConnectionDetailInfoView.swift */,
+				4991D22B2A56478400978143 /* ConnectionColume.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -827,6 +853,7 @@
 				495340B320DE68C300B0D3FF /* StatusItemView.swift in Sources */,
 				F935B2FC23085515009E4D33 /* SystemProxyManager.swift in Sources */,
 				495A44D320D267D000888A0A /* LaunchAtLogin.swift in Sources */,
+				4991D2322A565E6A00978143 /* Combine+Ext.swift in Sources */,
 				49281C802A1F01FA00F60935 /* DebugSettingViewController.swift in Sources */,
 				49CCDA2A2A54F9AC00FF1E13 /* ClashWindowController.swift in Sources */,
 				4929F67F258CE04700A435F6 /* Settings.swift in Sources */,
@@ -834,6 +861,7 @@
 				493AEAE3221AE3420016FE98 /* AppVersionUtil.swift in Sources */,
 				49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */,
 				49CCDA2D2A54FBA600FF1E13 /* ConnectionsViewModel.swift in Sources */,
+				4991D2302A564DDC00978143 /* SpeedUtils.swift in Sources */,
 				496BDEE021196F1E00C5207F /* Logger.swift in Sources */,
 				4905A2CA2A20841B00AEDA2E /* NSView+Layout.swift in Sources */,
 				49722FEF211F338B00650A41 /* FileEvent.swift in Sources */,
@@ -842,6 +870,7 @@
 				4913C82321157D0200F6B87C /* Notification.swift in Sources */,
 				8ACD21BD27A04ED500BC4632 /* ProxyModeChangeCommand.swift in Sources */,
 				498BC2552929CCAE00CA8084 /* GeneralSettingViewController.swift in Sources */,
+				4991D22E2A564A4200978143 /* ConnectionTextCellView.swift in Sources */,
 				49228457270AADE20027A4B6 /* RemoteConfigUpdateIntervalSettingView.swift in Sources */,
 				F9203A26236342820020D57D /* AppDelegate+..swift in Sources */,
 				499A485C22ED793C00F6C675 /* NSView+Nib.swift in Sources */,
@@ -861,12 +890,15 @@
 				49CCDA302A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift in Sources */,
 				49D223392A1DA5F10002FFCB /* SSIDSuspendTool.swift in Sources */,
 				F910AA24240134AF00116E95 /* ProxyGroupMenu.swift in Sources */,
+				4991D22A2A56472300978143 /* ConnectionCellProtocol.swift in Sources */,
 				4952C3BF2115C7CA004A4FA8 /* MenuItemFactory.swift in Sources */,
 				49D6A45429AEEC3C006487EF /* NewStatusItemView.swift in Sources */,
 				F977FAAC2366790500C17F1F /* AutoUpgardeManager.swift in Sources */,
 				499A485822ED715200F6C675 /* RemoteConfigModel.swift in Sources */,
 				49D176AB23575BB20093DD7B /* ProxyGroupMenuItemView.swift in Sources */,
 				49B4575D244F4A2A00463C39 /* PrivilegedHelperManager.swift in Sources */,
+				4991D2282A5646D200978143 /* ConnectionProxyClientCellView.swift in Sources */,
+				4991D22C2A56478400978143 /* ConnectionColume.swift in Sources */,
 				49B4575F244FD4D100463C39 /* PrivilegedHelperManager+Legacy.swift in Sources */,
 				4966E9E32118153A00A391FB /* NSUserNotificationCenter+Extension.swift in Sources */,
 				4994B5522A47C1C900E595B9 /* NSMutableArray+Safe.m in Sources */,

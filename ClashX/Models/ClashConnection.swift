@@ -81,6 +81,10 @@ extension ClashConnectionSnapShot {
         var pid:String?
         var processImage:NSImage?
 
+        lazy var processName:String = {
+            return URL(string: processPath)?.lastPathComponent ?? ""
+        }()
+
         enum CodingKeys: CodingKey {
             case network
             case type

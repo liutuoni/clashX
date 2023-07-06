@@ -8,7 +8,7 @@
 
 import Foundation
 import Starscream
-import SwiftyJSON
+import Combine
 
 struct ConnectionApplication {
     let pid: String
@@ -55,12 +55,15 @@ class ConnectionsViewModel {
                     conn.metadata.pid = pid
                     conn.metadata.processPath = info.path ?? ""
                     conn.metadata.processImage = info.image
+                } else {
+                    print("===> not found for pid", conn.metadata.host)
                 }
 
                 connections[conn.id] = conn
 
             }
         }
+
     }
 
     func getProcessList() -> [String:String] {

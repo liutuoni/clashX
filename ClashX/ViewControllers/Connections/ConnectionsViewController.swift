@@ -75,8 +75,13 @@ class ConnectionsViewController: NSViewController {
              $0.topAnchor.constraint(equalTo: topView.bottomAnchor)]
         }
 
-        viewModel.$applicationMap.sink { x in
-            print("===>", x.keys.count)
+        viewModel.$applicationMap.sink { app in
+            print("===>", app.keys.count)
+        }.store(in: &disposeBag)
+
+        viewModel.$connections.sink { [weak self] conn  in
+            guard let self else {return}
+            self.topView.connections = Array(conn.values)
         }.store(in: &disposeBag)
     }
 }
