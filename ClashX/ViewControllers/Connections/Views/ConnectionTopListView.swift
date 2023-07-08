@@ -10,26 +10,18 @@ import AppKit
 
 @available(macOS 10.15, *)
 class ConnectionTopListView: NSView {
-    var connections = [ClashConnectionSnapShot.Connection]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    let viewModel:ConnectionTopListViewModel
+
     private let tableView: NSTableView = {
         let table = NSTableView()
-        table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
-        table.backgroundColor = .clear
         table.allowsColumnSelection = false
-        table.usesAutomaticRowHeights = true
-        table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
 
-    init() {
+    init(viewModel:ConnectionTopListViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setupSubviews()
-        tableView.wantsLayer = true
-        tableView.layer?.backgroundColor = NSColor.yellow.cgColor
     }
 
     required init?(coder: NSCoder) {
@@ -51,29 +43,34 @@ class ConnectionTopListView: NSView {
             column.maxWidth = columnType.maxWidth
             tableView.addTableColumn(column)
         }
+
+        tableView.usesAlternatingRowBackgroundColors = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sizeLastColumnToFit()
         tableView.reloadData()
 
+        viewModel.onReloadTable = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 }
 
 @available(macOS 10.15, *)
 extension ConnectionTopListView: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
-        print(tableView.selectedRow)
+        viewModel.setSelect(row: tableView.selectedRow)
     }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 30
+        return 28
     }
 }
 
 @available(macOS 10.15, *)
 extension ConnectionTopListView: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return connections.count
+        return viewModel.connections.count
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -90,7 +87,7 @@ extension ConnectionTopListView: NSTableViewDataSource {
             }
             view?.identifier = tableColumn.identifier
         }
-        let c = connections[row]
+        let c = viewModel.connections[row]
         view?.setup(with: c, type: type)
         return view
     }

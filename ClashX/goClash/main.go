@@ -21,6 +21,7 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/Dreamacro/clash/component/mmdb"
 	"github.com/Dreamacro/clash/config"
 	"github.com/Dreamacro/clash/constant"
 	"github.com/Dreamacro/clash/hub/executor"
@@ -289,6 +290,15 @@ func verifyGEOIPDataBase() bool {
 		return false
 	}
 	return true
+}
+
+//export clash_getCountryForIp
+func clash_getCountryForIp(ip *C.char) *C.char {
+	record, _ := mmdb.Instance().Country(net.ParseIP(C.GoString(ip)))
+	if record != nil {
+		return C.CString(record.Country.IsoCode)
+	}
+	return C.CString("")
 }
 
 //export clash_closeAllConnections

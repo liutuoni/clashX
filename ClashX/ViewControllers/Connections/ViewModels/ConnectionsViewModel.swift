@@ -22,6 +22,12 @@ class ConnectionsViewModel {
     @Published var applicationMap = [String: ConnectionApplication]()
     @Published var connections = [String:ClashConnectionSnapShot.Connection]()
 
+    @Published var selectedConnection: ClashConnectionSnapShot.Connection? {
+        didSet {
+            showBottomView = selectedConnection != nil
+        }
+    }
+    @Published var showBottomView = false
     private let req = ConnectionsReq()
     init() {
         req.connect()

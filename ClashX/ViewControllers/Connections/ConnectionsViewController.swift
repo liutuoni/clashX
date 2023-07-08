@@ -13,12 +13,17 @@ import Combine
 class ConnectionsViewController: NSViewController {
     let viewModel = ConnectionsViewModel()
     let leftTableView = ConnectionsLeftPannelView()
-    let topView = ConnectionTopListView()
+
+    let topViewModel = ConnectionTopListViewModel()
+    lazy var topView = ConnectionTopListView(viewModel: topViewModel)
     let detailView = ConnectionDetailInfoView()
+
+    let connectionDetailViewModel = ConnectionDetailViewModel()
 
     var disposeBag = Set<AnyCancellable>()
 
     var leftWidthConstraint: NSLayoutConstraint?
+    var topViewBottomConstraint: NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -65,23 +70,41 @@ class ConnectionsViewController: NSViewController {
              $0.topAnchor.constraint(equalTo: view.topAnchor),
              $0.rightAnchor.constraint(equalTo: view.rightAnchor)]
         }
+        topViewBottomConstraint = topView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
-        view.addSubview(detailView)
-        detailView.makeConstraints {
-            [$0.leftAnchor.constraint(equalTo: leftTableView.rightAnchor),
-             $0.heightAnchor.constraint(equalToConstant: 200),
-             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-             $0.rightAnchor.constraint(equalTo: view.rightAnchor),
-             $0.topAnchor.constraint(equalTo: topView.bottomAnchor)]
+        detailView.setup(with: connectionDetailViewModel)
+
+        topViewModel.onSelectedConnection = { [weak self] in
+            self?.viewModel.selectedConnection = $0
         }
-
         viewModel.$applicationMap.sink { app in
             print("===>", app.keys.count)
         }.store(in: &disposeBag)
 
-        viewModel.$connections.sink { [weak self] conn  in
-            guard let self else {return}
-            self.topView.connections = Array(conn.values)
+        viewModel.$selectedConnection.sink { [weak self] conn in
+            self?.connectionDetailViewModel.accept(connection: conn)
+        }.store(in: &disposeBag)
+
+        viewModel.$connections.map {Array($0.values)}.sink { [weak self] in
+            self?.topViewModel.accept(connections: $0)
+        }.store(in: &disposeBag)
+
+        viewModel.$showBottomView.removeDuplicates().sink {  [weak self] show in
+            guard let self else { return }
+            if show {
+                view.addSubview(detailView)
+                topViewBottomConstraint?.isActive = false
+                detailView.makeConstraints {
+                    [$0.leftAnchor.constraint(equalTo: self.leftTableView.rightAnchor),
+                     $0.heightAnchor.constraint(equalToConstant: 236),
+                     $0.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                     $0.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+                     $0.topAnchor.constraint(equalTo: self.topView.bottomAnchor)]
+                }
+            } else {
+                detailView.removeFromSuperview()
+                topViewBottomConstraint?.isActive = true
+            }
         }.store(in: &disposeBag)
     }
 }

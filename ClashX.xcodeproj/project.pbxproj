@@ -71,6 +71,10 @@
 		49B4575F244FD4D100463C39 /* PrivilegedHelperManager+Legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4575E244FD4D100463C39 /* PrivilegedHelperManager+Legacy.swift */; };
 		49BB31E7246853EA008A4CB0 /* ICloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB31E6246853EA008A4CB0 /* ICloudManager.swift */; };
 		49BC061C212931F4005A0FE7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC061B212931F4005A0FE7 /* AboutViewController.swift */; };
+		49C9AFEC2A592C5D00178BB4 /* ConnectionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9AFEB2A592C5D00178BB4 /* ConnectionDetailViewModel.swift */; };
+		49C9AFF02A592F3F00178BB4 /* ConnectionDetailInfoGeneralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C9AFEF2A592F3F00178BB4 /* ConnectionDetailInfoGeneralView.xib */; };
+		49C9AFF22A59366200178BB4 /* ConnectionDetailInfoGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9AFF12A59366200178BB4 /* ConnectionDetailInfoGeneralView.swift */; };
+		49C9AFF42A593B8800178BB4 /* ConnectionTopListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9AFF32A593B8800178BB4 /* ConnectionTopListViewModel.swift */; };
 		49C9EF64223E78F5005D8B6A /* ClashProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9EF63223E78F5005D8B6A /* ClashProxy.swift */; };
 		49CCDA282A54F8DA00FF1E13 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA272A54F8DA00FF1E13 /* ConnectionsViewController.swift */; };
 		49CCDA2A2A54F9AC00FF1E13 /* ClashWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCDA292A54F9AC00FF1E13 /* ClashWindowController.swift */; };
@@ -223,6 +227,10 @@
 		49B4575E244FD4D100463C39 /* PrivilegedHelperManager+Legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivilegedHelperManager+Legacy.swift"; sourceTree = "<group>"; };
 		49BB31E6246853EA008A4CB0 /* ICloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudManager.swift; sourceTree = "<group>"; };
 		49BC061B212931F4005A0FE7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		49C9AFEB2A592C5D00178BB4 /* ConnectionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDetailViewModel.swift; sourceTree = "<group>"; };
+		49C9AFEF2A592F3F00178BB4 /* ConnectionDetailInfoGeneralView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionDetailInfoGeneralView.xib; sourceTree = "<group>"; };
+		49C9AFF12A59366200178BB4 /* ConnectionDetailInfoGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDetailInfoGeneralView.swift; sourceTree = "<group>"; };
+		49C9AFF32A593B8800178BB4 /* ConnectionTopListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTopListViewModel.swift; sourceTree = "<group>"; };
 		49C9EF63223E78F5005D8B6A /* ClashProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashProxy.swift; sourceTree = "<group>"; };
 		49CCDA272A54F8DA00FF1E13 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
 		49CCDA292A54F9AC00FF1E13 /* ClashWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashWindowController.swift; sourceTree = "<group>"; };
@@ -514,12 +522,22 @@
 			path = StatusItem;
 			sourceTree = "<group>";
 		};
+		49C9AFF52A596ABA00178BB4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				49CCDA2C2A54FBA600FF1E13 /* ConnectionsViewModel.swift */,
+				49C9AFEB2A592C5D00178BB4 /* ConnectionDetailViewModel.swift */,
+				49C9AFF32A593B8800178BB4 /* ConnectionTopListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		49CCDA2B2A54FA8900FF1E13 /* Connections */ = {
 			isa = PBXGroup;
 			children = (
+				49C9AFF52A596ABA00178BB4 /* ViewModels */,
 				49CCDA2E2A54FC1900FF1E13 /* Views */,
 				49CCDA272A54F8DA00FF1E13 /* ConnectionsViewController.swift */,
-				49CCDA2C2A54FBA600FF1E13 /* ConnectionsViewModel.swift */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -528,10 +546,12 @@
 			isa = PBXGroup;
 			children = (
 				4991D2262A56467600978143 /* Cell */,
+				4991D22B2A56478400978143 /* ConnectionColume.swift */,
+				49C9AFF12A59366200178BB4 /* ConnectionDetailInfoGeneralView.swift */,
+				49C9AFEF2A592F3F00178BB4 /* ConnectionDetailInfoGeneralView.xib */,
+				49CCDA352A55126A00FF1E13 /* ConnectionDetailInfoView.swift */,
 				49CCDA2F2A54FC3300FF1E13 /* ConnectionsLeftPannelView.swift */,
 				49CCDA312A5506D100FF1E13 /* ConnectionTopListView.swift */,
-				49CCDA352A55126A00FF1E13 /* ConnectionDetailInfoView.swift */,
-				4991D22B2A56478400978143 /* ConnectionColume.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -748,6 +768,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C9AFF02A592F3F00178BB4 /* ConnectionDetailInfoGeneralView.xib in Resources */,
 				49761DA721C9497000AE13EF /* dashboard in Resources */,
 				4929F677258CD89B00A435F6 /* Country.mmdb.gz in Resources */,
 				4981C88B216BAE4A008CC14A /* Localizable.strings in Resources */,
@@ -864,6 +885,7 @@
 				493AEAE3221AE3420016FE98 /* AppVersionUtil.swift in Sources */,
 				49CF3B2120CD7463001EBF94 /* AppDelegate.swift in Sources */,
 				49CCDA2D2A54FBA600FF1E13 /* ConnectionsViewModel.swift in Sources */,
+				49C9AFEC2A592C5D00178BB4 /* ConnectionDetailViewModel.swift in Sources */,
 				4991D2302A564DDC00978143 /* SpeedUtils.swift in Sources */,
 				496BDEE021196F1E00C5207F /* Logger.swift in Sources */,
 				4905A2CA2A20841B00AEDA2E /* NSView+Layout.swift in Sources */,
@@ -897,8 +919,10 @@
 				4991D22A2A56472300978143 /* ConnectionCellProtocol.swift in Sources */,
 				4952C3BF2115C7CA004A4FA8 /* MenuItemFactory.swift in Sources */,
 				49D6A45429AEEC3C006487EF /* NewStatusItemView.swift in Sources */,
+				49C9AFF22A59366200178BB4 /* ConnectionDetailInfoGeneralView.swift in Sources */,
 				F977FAAC2366790500C17F1F /* AutoUpgardeManager.swift in Sources */,
 				499A485822ED715200F6C675 /* RemoteConfigModel.swift in Sources */,
+				49C9AFF42A593B8800178BB4 /* ConnectionTopListViewModel.swift in Sources */,
 				49D176AB23575BB20093DD7B /* ProxyGroupMenuItemView.swift in Sources */,
 				49B4575D244F4A2A00463C39 /* PrivilegedHelperManager.swift in Sources */,
 				4991D2282A5646D200978143 /* ConnectionProxyClientCellView.swift in Sources */,

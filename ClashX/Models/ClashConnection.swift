@@ -39,8 +39,22 @@ extension ClashConnectionSnapShot {
         let rulePayload:String
 
         @Published var done = false
-        @Published var uploadSpeed = 0
-        @Published var downloadSpeed = 0
+        @Published var uploadSpeed = 0 {
+            didSet {
+                if uploadSpeed > maxUploadSpeed {
+                    maxUploadSpeed = uploadSpeed
+                }
+            }
+        }
+        @Published var downloadSpeed = 0 {
+            didSet {
+                if downloadSpeed > maxDownloadSpeed {
+                    maxDownloadSpeed = downloadSpeed
+                }
+            }
+        }
+        @Published private(set) var maxUploadSpeed = 0
+        @Published private(set) var maxDownloadSpeed = 0
 
         enum CodingKeys: CodingKey {
             case id
