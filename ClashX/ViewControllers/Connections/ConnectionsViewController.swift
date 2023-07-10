@@ -12,8 +12,8 @@ import Combine
 @available(macOS 10.15, *)
 class ConnectionsViewController: NSViewController {
     let viewModel = ConnectionsViewModel()
-    let leftTableView = ConnectionsLeftPannelView()
-
+    let leftViewModel = ConnectionLeftPannelViewModel()
+    lazy var leftTableView = ConnectionsLeftPannelView(viewModel: leftViewModel)
     let topViewModel = ConnectionTopListViewModel()
     lazy var topView = ConnectionTopListView(viewModel: topViewModel)
     let detailView = ConnectionDetailInfoView()
@@ -87,6 +87,10 @@ class ConnectionsViewController: NSViewController {
 
         viewModel.$connections.map {Array($0.values)}.sink { [weak self] in
             self?.topViewModel.accept(connections: $0)
+        }.store(in: &disposeBag)
+
+        viewModel.$applicationMap.map {Array($0.values)}.sink { [weak self] in
+            self?.leftViewModel.accept(connections: $0)
         }.store(in: &disposeBag)
 
         viewModel.$showBottomView.removeDuplicates().sink {  [weak self] show in

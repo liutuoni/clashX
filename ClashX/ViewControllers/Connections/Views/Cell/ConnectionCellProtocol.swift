@@ -11,4 +11,10 @@ import AppKit
 @available(macOS 10.15, *)
 protocol ConnectionCellProtocol: NSView {
     func setup(with connection:  ClashConnectionSnapShot.Connection, type: ConnectionColume)
+
+}
+
+@available(macOS 10.15, *)
+protocol ConnectionApplicationCellProtocol: NSView {
+    func setup(with connection: ConnectionApplication)
 }
