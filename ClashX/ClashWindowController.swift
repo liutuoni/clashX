@@ -17,6 +17,8 @@ class ClashWindowController<T: NSViewController>: NSWindowController, NSWindowDe
         wc.contentViewController = T()
         wc.windowFrameAutosaveName = T.className()
 
+        win.titlebarAppearsTransparent = true
+        win.backgroundColor = NSColor(red: 239/255.0, green: 239/255.0, blue: 239/255.0, alpha: 1)
         return wc
     }
 
